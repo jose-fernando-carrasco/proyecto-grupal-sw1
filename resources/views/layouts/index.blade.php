@@ -29,7 +29,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('dashboard')}}">
                 <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
                 <div class="sidebar-brand-text mx-3">Mascotas</div>
             </a>
@@ -185,10 +185,10 @@
                 <!-- End of Topbar -->
 
                 @yield('content')
-
+                
             </div>
             <!-- End of Main Content -->
-
+            
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
@@ -199,22 +199,18 @@
 
         </div>
         <!-- End of Content Wrapper -->
-
+        {{-- <img src="https://i.imgur.com/K7A78We.jpg" alt="uuuuuu"> --}}
     </div>
     <!-- End of Page Wrapper -->
 
     <!-- Bootstrap core JavaScript-->
-    {{-- <script src="js/index/jquery.min.js"></script> --}}
-    {{-- <script src="js/index/bootstrap.bundle.min.js"></script> --}}
     <script src="{{asset('js/index/jquery.min.js')}}"></script>
     <script src="{{asset('js/index/bootstrap.bundle.min.js')}}"></script>
 
     <!-- Custom scripts for all pages-->
-    {{-- <script src="js/index/sb-admin-2.min.js"></script> --}}
     <script src="{{asset('js/index/sb-admin-2.min.js')}}"></script>
 
     <!-- Page level plugins -->
-    {{-- <script src="js/index/Chart.min.js"></script> --}}
     <script src="{{asset('js/index/Chart.min.js')}}"></script>
     @yield('js')
 </body>

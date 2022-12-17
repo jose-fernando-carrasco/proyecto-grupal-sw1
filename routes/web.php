@@ -14,17 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login-personalizado');
-});
-
-Route::get('/dashboard', function () {
-    return view('layouts.index');
-})->middleware(['auth'])->name('dashboard');
-
+Route::get('/', function () { return view('auth.login-personalizado'); });
+Route::get('/dashboard', function () { return view('layouts.index'); })->middleware(['auth'])->name('dashboard');
 require __DIR__.'/auth.php';
 
 // Usuarios
 Route::prefix('users')->controller(UserController::class)->group(function () {
     Route::get('show/{user}', 'show')->name('users.show');
+    Route::put('update', 'update')->name('users.update');
 });
