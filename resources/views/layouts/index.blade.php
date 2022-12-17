@@ -9,10 +9,14 @@
     <meta name="author" content="">
     <title> @yield('title') </title>
     <!-- Custom fonts for this template-->
-    <link href="css/index/all.min.css" rel="stylesheet" type="text/css">
+
+    {{-- <link href="css/index/all.min.css" rel="stylesheet" type="text/css">
+    <link href="css/index/sb-admin-2.min.css" rel="stylesheet"> --}}
+    <link href="{{asset('css/index/all.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('css/index/sb-admin-2.min.css')}}" rel="stylesheet">
+
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <!-- Custom styles for this template-->
-    <link href="css/index/sb-admin-2.min.css" rel="stylesheet">
     @yield('css')
 </head>
 
@@ -85,7 +89,7 @@
 
             <!-- Sidebar Message -->
             <div class="sidebar-card d-none d-lg-flex">
-                <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
+                <img class="sidebar-card-illustration mb-2" src="{{asset('img/undraw_rocket.svg')}}" alt="...">
                 <p class="text-center mb-2"><strong>Mascotas </strong>su cuenta contiene anuncios</p>
                 <a class="btn btn-success btn-sm" href="">Actualizate a Premium</a>
             </div>
@@ -124,7 +128,7 @@
                                         <span class="font-weight-bold">A new monthly report is ready to download!</span>
                                     </div>
                                 </a>
-            
+
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
                             </div>
                         </li>
@@ -141,14 +145,14 @@
                                 aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">Message Center</h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3"><img class="rounded-circle" src="img/undraw_profile_1.svg" alt="..."><div class="status-indicator bg-success"></div></div>
+                                    <div class="dropdown-list-image mr-3"><img class="rounded-circle" src="{{asset('img/undraw_rocket.svg')}}" alt="..."><div class="status-indicator bg-success"></div></div>
                                     <div class="font-weight-bold">
                                         <div class="text-truncate">Hi there! I am wondering if you can help me with a
                                             problem I've been having.</div>
                                         <div class="small text-gray-500">Emily Fowler · 58m</div>
                                     </div>
                                 </a>
-                                
+
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
                             </div>
                         </li>
@@ -159,21 +163,21 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="{{asset('img/undraw_profile.svg')}}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="{{-- {{route('users.show',auth()->user())}} --}}"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                <a class="dropdown-item" href="{{route('users.show',auth()->user())}}"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-                                
+
                                 <div class="dropdown-divider"></div>
-                                
+
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
                                     <button type="submit" class="dropdown-item"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>Cerrar Sesión</button>
                                 </form>
-                        
+
                             </div>
                         </li>
                     </ul>
@@ -181,7 +185,7 @@
                 <!-- End of Topbar -->
 
                 @yield('content')
-                
+
             </div>
             <!-- End of Main Content -->
 
@@ -200,14 +204,18 @@
     <!-- End of Page Wrapper -->
 
     <!-- Bootstrap core JavaScript-->
-    <script src="js/index/jquery.min.js"></script>
-    <script src="js/index/bootstrap.bundle.min.js"></script>
+    {{-- <script src="js/index/jquery.min.js"></script> --}}
+    {{-- <script src="js/index/bootstrap.bundle.min.js"></script> --}}
+    <script src="{{asset('js/index/jquery.min.js')}}"></script>
+    <script src="{{asset('js/index/bootstrap.bundle.min.js')}}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/index/sb-admin-2.min.js"></script>
+    {{-- <script src="js/index/sb-admin-2.min.js"></script> --}}
+    <script src="{{asset('js/index/sb-admin-2.min.js')}}"></script>
 
     <!-- Page level plugins -->
-    <script src="js/index/Chart.min.js"></script>
+    {{-- <script src="js/index/Chart.min.js"></script> --}}
+    <script src="{{asset('js/index/Chart.min.js')}}"></script>
     @yield('js')
 </body>
 

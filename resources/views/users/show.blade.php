@@ -2,6 +2,8 @@
 @section('title', 'Perfil')
 
 @section('css')
+
+
 @endsection
 
 @section('content')
