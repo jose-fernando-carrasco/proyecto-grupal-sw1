@@ -7,14 +7,44 @@
 
 @section('content')
 
-
 <div class="padding">
     <div class="col-md-8">
         <!-- Column -->
         <div class="card">
-            <img class="card-img-top" src="{{asset('img/fondoPerfil.jpg')}}" alt="Card image cap">
+            {{-- <img class="card-img-top" src="{{asset('img/fondoPerfil.jpg')}}" alt="Card image cap"> --}}
+            <img class="card-img-top" src="{{asset($user->fondo)}}" alt="Card image cap">
+            
+            <div class="subir-fondo">
+                <a class="btn btn-primary" data-toggle="modal" data-target="#subir-fondo"><i class="fas fa-external-link-alt"></i>&nbsp fondo</a>
+                <!-- Modal -->
+                <div class="modal fade" id="subir-fondo" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="subir-fondoLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="subir-fondoLabel">Subiendo Fondo de Perfil</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+
+                        <form action="{{route('users.subirFoto')}}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="modal-body">
+                                <input type="file" name="file" accept="image/*">
+                                <input type="hidden" name="tipo" value="fondo">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary">Actualizar</button>
+                            </div>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="card-body little-profile text-center">
-                <div class="pro-img"><img src="{{asset('img/Usuario.jpg')}}" alt="user"></div>
+                <img class="pro-img" src="{{asset($user->photo)}}" alt="user">
                 <h3 class="m-b-0">Datos de Perfil</h3>
 
                 <input type="text" class="form-control mb-4 mt-3" value="{{$user->name}}" readonly>
@@ -28,7 +58,7 @@
                     <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                        <h5 class="modal-title" id="staticBackdropLabel">Actualizando Datos</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>

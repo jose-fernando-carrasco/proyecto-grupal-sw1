@@ -22,4 +22,5 @@ require __DIR__.'/auth.php';
 Route::prefix('users')->controller(UserController::class)->group(function () {
     Route::get('show/{user}', 'show')->name('users.show');
     Route::put('update', 'update')->name('users.update');
+    Route::post('subirFoto', 'subirFoto')->name('users.subirFoto');
 });

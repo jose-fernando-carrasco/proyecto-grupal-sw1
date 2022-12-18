@@ -18,7 +18,7 @@ class RolesPermisosSeeder extends Seeder
 
         $permisosMascotas = [Permission::create(['name' => 'editar mascota']),
                             Permission::create(['name' => 'crear mascota']),
-                            Permission::create([ 'name' => 'editar mascota ']),
+                            // Permission::create([ 'name' => 'editar mascota ']),
                             Permission::create([ 'name' => 'eliminar mascota'])
                             ];
 

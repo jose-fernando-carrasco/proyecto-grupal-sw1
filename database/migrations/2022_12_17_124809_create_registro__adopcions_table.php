@@ -21,7 +21,7 @@ class CreateRegistroAdopcionsTable extends Migration
             $table->string('domicilio');
             $table->double('longitudDom');
             $table->double('latitudDom');
-            $table->enum('estado',['adoptado, adopcion'])->nullable()->default('adopcion');
+            // $table->enum('estado',['adoptado, adopcion'])->nullable()->default('adopcion');
             $table->foreignId('duenho_id')->constrained('users');
             $table->foreignId('mascota_id')->constrained();
             $table->timestamps();

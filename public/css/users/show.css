@@ -23,7 +23,15 @@
 
 .pro-img {
     margin-top: -80px;
-    margin-bottom: 20px
+    margin-bottom: 20px;
+    border-radius: 100px;
+    width: 150px;
+}
+
+.subir-fondo a {
+    width: 90px;
+    height: 33px;
+    font-size: 13px;
 }
 
 .little-profile .pro-img img {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules;
 
 class UserController extends Controller
@@ -23,6 +24,22 @@ class UserController extends Controller
             return redirect()->route('users.show',$user)->with('info','ok');
         }
         return redirect()->route('users.show',$user)->with('info','error');
+    }
+
+    public function subirFoto(Request $request){
+        $request->validate(['file' => 'required|image']);
+        $user = User::find(auth()->user()->id);
+        if($request->tipo == 'fondo'){
+            $imagen = $request->file('file')->store('public/fondos');
+            $imagen = Storage::url($imagen);
+            $user->fondo = $imagen;
+        }else{
+            $imagen = $request->file('file')->store('public/perfiles');
+            $imagen = Storage::url($imagen);
+            $user->photo = 'storage/'.$imagen;
+        }
+        $user->update();
+        return redirect()->route('users.show',auth()->user());
     }
 
 }
