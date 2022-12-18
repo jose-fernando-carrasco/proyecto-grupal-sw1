@@ -36,7 +36,7 @@ class UserController extends Controller
         }else{
             $imagen = $request->file('file')->store('public/perfiles');
             $imagen = Storage::url($imagen);
-            $user->photo = 'storage/'.$imagen;
+            $user->photo = $imagen;
         }
         $user->update();
         return redirect()->route('users.show',auth()->user());
