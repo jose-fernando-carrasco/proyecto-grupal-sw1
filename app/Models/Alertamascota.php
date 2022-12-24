@@ -8,5 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Alertamascota extends Model
 {
     use HasFactory;
-    protected $fillable = ['latitud','longitud','detalle','mascota_id'];
+    protected $fillable = ['latitud','longitud','detalle','mascota_id','user_id'];
+
+    public function mascota(){
+        return $this->belongsTo(Mascota::class);
+    }
 }

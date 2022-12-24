@@ -1,5 +1,6 @@
 const Formulario = document.querySelector(".formulario");
 const input = document.querySelector(".entrada");
+const elegido = document.getElementById("elegido");
 var map;
 var marcador;
 var contador = 0;
@@ -33,15 +34,18 @@ function initMap() {
 
 Formulario.addEventListener("submit", event => {
     event.preventDefault();
-    // (latitud == null && longitud == null) && 
-    if ((latitud == null && longitud == null) || input.value.length == 0) {
-        // console.log('debe marcar ubi');
+    if ((latitud == null && longitud == null) || input.value.length == 0 || elegido.value == null) {
         var cad = '';
-        if (input.value.length == 0) {
-            cad = 'Debe escribir un detalle';
+        if (elegido.value == '') {
+            cad = 'Debe Seleccionar a su mascota';
         } else {
-            cad = 'Debe Marcar Ubicacion';
+            if (input.value.length == 0) {
+                cad = 'Debe escribir un detalle';
+            } else {
+                cad = 'Debe Marcar Ubicacion';
+            }
         }
+
         Swal.fire({
             position: 'top-end',
             icon: 'error',
@@ -54,7 +58,7 @@ Formulario.addEventListener("submit", event => {
             latitud: latitud,
             longitud: longitud,
             detalle: input.value,
-            mascota_id: 1 //prueba constante
+            mascota_id: elegido.value //prueba constante
         }).then(res => {
             console.log(res.data);
             Swal.fire({

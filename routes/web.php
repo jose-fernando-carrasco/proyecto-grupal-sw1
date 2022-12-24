@@ -28,6 +28,7 @@ Route::prefix('users')->controller(UserController::class)->group(function () {
 
 // Mascotas
 Route::prefix('mascotas')->controller(MascotaController::class)->group(function () {
-    Route::get('create', 'create')->name('mascotas.create');
+    Route::get('createAlerta', 'createAlerta')->name('mascotas.createAlerta');
     Route::post('alertaStore', 'alertaStore')->name('mascotas.alertaStore');
+    Route::get('notifications', 'notifications')->name('mascotas.notifications');
 });

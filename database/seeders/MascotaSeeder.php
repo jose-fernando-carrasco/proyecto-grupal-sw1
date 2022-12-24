@@ -22,5 +22,14 @@ class MascotaSeeder extends Seeder
             'pedigree'  => true,
             'duenho_id' => 1 // Fernando
         ]);
+
+        Mascota::create([
+            'nombre'    => 'Danger',
+            'raza'      => 'boxer',
+            'color'     => 'cafe con blanco',
+            'edad'      => 2,
+            'pedigree'  => true,
+            'duenho_id' => 2 // Fernando
+        ]);
     }
 }
