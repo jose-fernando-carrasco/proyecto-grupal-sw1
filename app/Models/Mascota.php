@@ -9,11 +9,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Mascota extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         "raza_id", "nombre", "color", "edad", "duenho_id", "pedigree", "imagen"
     ];
 
-    public function raza(): BelongsTo {
+    public function raza(): BelongsTo
+    {
         return $this->belongsTo(Raza::class);
+    }
+
+    public function duenho(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function alertas(){
+        return $this->hasMany(Alertamascota::class);
     }
 }

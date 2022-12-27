@@ -57,11 +57,11 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
+                    <span>Mascotas Perdidas</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="">Buttons</a>
+                        <a class="collapse-item" href="{{route('mascotas.createAlerta')}}">Crear Alerta</a>
                         <a class="collapse-item" href="">Cards</a>
                     </div>
                 </div>
@@ -120,21 +120,14 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
                                 <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
+                                <span class="badge badge-danger badge-counter count-notification"></span>
                             </a>
                             <!-- Dropdown - Alerts -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">Alerts Center</h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3"><div class="icon-circle bg-primary"><i class="fas fa-file-alt text-white"></i></div></div>
-                                    <div>
-                                        <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                                    </div>
-                                </a>
-
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                                <h6 class="dropdown-header">Notificaciones</h6>
+                                <div class="cuerpo-Notificaciones"></div>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Ver todas las Notificaciones</a>
                             </div>
                         </li>
 
@@ -167,7 +160,7 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{auth()->user()->name}}</span>
                                 <img class="img-profile rounded-circle" src="{{asset(Auth()->user()->photo)}}">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -207,7 +200,8 @@
         {{-- <img src="https://i.imgur.com/K7A78We.jpg" alt="uuuuuu"> --}}
     </div>
     <!-- End of Page Wrapper -->
-
+    <script src="{{asset('js/app.js')}}"></script>
+  
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('js/index/jquery.min.js')}}"></script>
     <script src="{{asset('js/index/bootstrap.bundle.min.js')}}"></script>
@@ -217,6 +211,7 @@
 
     <!-- Page level plugins -->
     <script src="{{asset('js/index/Chart.min.js')}}"></script>
+    <script src="{{asset('js/index/alerta-mascota-websocket.js')}}"></script>
     @yield('js')
 </body>
 

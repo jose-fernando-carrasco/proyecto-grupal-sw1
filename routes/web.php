@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MascotaController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,3 +28,9 @@ Route::prefix('users')->controller(UserController::class)->group(function () {
 
 Route::resource("razas", \App\Http\Controllers\RazaController::class)->middleware("auth");
 Route::resource("mascotas", \App\Http\Controllers\MascotaController::class)->middleware("auth");
+// Mascotas
+Route::prefix('mascotas')->controller(MascotaController::class)->group(function () {
+    Route::get('createAlerta', 'createAlerta')->name('mascotas.createAlerta');
+    Route::post('alertaStore', 'alertaStore')->name('mascotas.alertaStore');
+    Route::get('notifications', 'notifications')->name('mascotas.notifications');
+});
