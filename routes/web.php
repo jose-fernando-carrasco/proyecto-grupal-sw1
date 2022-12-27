@@ -24,3 +24,6 @@ Route::prefix('users')->controller(UserController::class)->group(function () {
     Route::put('update', 'update')->name('users.update');
     Route::post('subirFoto', 'subirFoto')->name('users.subirFoto');
 });
+
+Route::resource("razas", \App\Http\Controllers\RazaController::class)->middleware("auth");
+Route::resource("mascotas", \App\Http\Controllers\MascotaController::class)->middleware("auth");

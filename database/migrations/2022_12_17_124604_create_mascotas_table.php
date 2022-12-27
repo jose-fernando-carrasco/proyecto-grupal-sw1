@@ -23,9 +23,15 @@ class CreateMascotasTable extends Migration
             $table->integer('edad');
             $table->boolean('pedigree');
             $table->unsignedBigInteger('duenho_id');
+            $table->unsignedBigInteger('raza_id');
             $table->foreign('duenho_id')
                     ->references('id')
                     ->on('users')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
+            $table->foreign('raza_id')
+                    ->references('id')
+                    ->on('razas')
                     ->onDelete('cascade')
                     ->onUpdate('cascade');
             $table->timestamps();

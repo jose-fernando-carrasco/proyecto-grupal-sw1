@@ -41,7 +41,12 @@
             <li class="nav-item active">
                 <a class="nav-link" href="index.html"><i class="fas fa-fw fa-user-alt"></i><span>Usuarios</span></a>
             </li>
-
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ route('razas.index') }}"><i class="fas fa-fw fa-user-alt"></i><span>Gestionar razas</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ route('mascotas.index') }}"><i class="fas fa-fw fa-user-alt"></i><span>Gestionar mascotas</span></a>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
 
