@@ -54,7 +54,8 @@ Formulario.addEventListener("submit", event => {
             timer: 1500
         });
     } else {
-        axios.post('/alertas-mascotas/alertaStore', {
+        // console.log(`[${latitud},${longitud}] detalle: ${input.value} mascota: ${elegido.value}`);
+        axios.post('/alertas', { //store
             latitud: latitud,
             longitud: longitud,
             detalle: input.value,
@@ -70,6 +71,7 @@ Formulario.addEventListener("submit", event => {
             });
         }).catch(error => {
             console.log(error);
+            console.log();
         });
     }
 

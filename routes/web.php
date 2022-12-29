@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlertaController;
 use App\Http\Controllers\MascotaController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -19,20 +20,12 @@ Route::get('/', function () { return view('auth.login-personalizado'); });
 Route::get('/dashboard', function () { return view('layouts.index'); })->middleware(['auth'])->name('dashboard');
 require __DIR__.'/auth.php';
 
-// Usuarios
-Route::prefix('users')->controller(UserController::class)->group(function () {
-    Route::get('show/{user}', 'show')->name('users.show');
-    Route::put('update', 'update')->name('users.update');
-    Route::post('subirFoto', 'subirFoto')->name('users.subirFoto');
-});
+Route::post('users/subirFoto', [UserController::class,'subirFoto'])->name('users.subirFoto')->middleware("auth");
+Route::resource('users', UserController::class)->except(['edit','destroy', 'index', 'store', 'create'])->middleware("auth");
 
 Route::resource("razas", \App\Http\Controllers\RazaController::class)->middleware("auth");
-
-// Mascotas el orden del prefijo importa
-Route::prefix('mascotas')->controller(MascotaController::class)->group(function () {
-    Route::get('createAlerta', 'createAlerta')->name('mascotas.createAlerta');
-    Route::post('alertaStore', 'alertaStore')->name('mascotas.alertaStore');
-    Route::get('notifications', 'notifications')->name('mascotas.notifications');
-});
 Route::resource("mascotas", \App\Http\Controllers\MascotaController::class)->middleware("auth");
+
+Route::get('alertas/notifications', [AlertaController::class,'notifications'])->name('alertas.notifications')->middleware("auth");
+Route::resource('alertas', AlertaController::class)->except(['edit','destroy','update', 'show'])->middleware("auth");
 

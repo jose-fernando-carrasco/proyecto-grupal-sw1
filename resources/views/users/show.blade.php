@@ -90,7 +90,7 @@
                         </button>
                         </div>
 
-                        <form action="{{route('users.update')}}" method="post">
+                        <form action="{{route('users.update',$user)}}" method="post">
                             @csrf
                             @method('put')
                             <div class="modal-body">
@@ -98,7 +98,7 @@
                                 <input type="email" class="form-control mt-3" name="email" value="{{$user->email}}" placeholder="correo...">
                                 <input type="password" class="form-control mt-3" name="password" placeholder="contraseña antigua...">
                                 <input type="password" class="form-control mt-3" name="password_new" placeholder="nueva contraseña...">
-                                <input type="hidden" name="user_id" value="{{$user->id}}">
+                                {{-- <input type="hidden" name="user_id" value="{{$user->id}}"> --}}
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

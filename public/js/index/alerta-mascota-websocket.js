@@ -1,7 +1,7 @@
 const countNotification = document.querySelector(".count-notification");
 const cuerpoNotification = document.querySelector(".cuerpo-Notificaciones");
 var cantNotiMostradas = 0;
-axios.get('/mascotas/notifications').then(res => {
+axios.get('/alertas/notifications').then(res => {
     console.log(res.data);
     countNotification.innerHTML = res.data[0];
     cantNotiMostradas = res.data[0];
@@ -13,7 +13,7 @@ axios.get('/mascotas/notifications').then(res => {
 
 
 Echo.join('alerta-mascota').listen('AlertamascotaEvent', (e) => {
-    axios.get('/mascotas/notifications').then(res => {
+    axios.get('/alertas/notifications').then(res => {
         countNotification.innerHTML = res.data[0];
         console.log('escuchando');
         // console.log(res.data[1][0]);
