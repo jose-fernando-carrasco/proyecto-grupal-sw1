@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\AlertamascotaEvent;
 use App\Models\Mascota;
 use Illuminate\Http\Request;
 use App\Models\Alertamascota;

@@ -16,20 +16,20 @@ class MascotaSeeder extends Seeder
     {
         Mascota::create([
             'nombre'    => 'Toby Choqui',
-            'raza'      => 'dalmata',
             'color'     => 'blanco con negro',
-            'edad'      => 4,
+            'edad'      => 4, //años
             'pedigree'  => true,
-            'duenho_id' => 1 // Fernando
+            'duenho_id' => 1, // Fernando
+            'raza_id' => 1 //Dalmata
         ]);
 
         Mascota::create([
             'nombre'    => 'Danger',
-            'raza'      => 'boxer',
             'color'     => 'cafe con blanco',
-            'edad'      => 2,
+            'edad'      => 2,//años
             'pedigree'  => true,
-            'duenho_id' => 2 // Fernando
+            'duenho_id' => 2, // Daniela
+            'raza_id' => 2 // Boxer
         ]);
     }
 }
