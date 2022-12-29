@@ -15,7 +15,6 @@ class UserController extends Controller
 
     public function update(User $user, Request $request){
         $request->validate(['name' => 'required', 'email' => 'required', 'password' => 'required', 'password_new' => 'required']);
-        // $user = User::find($request->user_id);
         if( password_verify($request->password,$user->password) ){
             $user->name = $request->name;
             $user->email = $request->email;
