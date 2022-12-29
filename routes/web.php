@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\MascotaController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\VacunaController;
+use App\Http\Controllers\MascotaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,8 @@ Route::prefix('mascotas')->controller(MascotaController::class)->group(function 
     Route::post('alertaStore', 'alertaStore')->name('mascotas.alertaStore');
     Route::get('notifications', 'notifications')->name('mascotas.notifications');
 });
+Route::get('mascotas/image-download/{mascota}', [MascotaController::class, 'downloadImage'])->name('mascotas.download.image');
+Route::get('vacunas/index/{mascota}', [VacunaController::class, 'index'])->name('vacunas.index');
+Route::get('vacunas/create/{mascota}', [VacunaController::class, 'create'])->name('vacunas.create');
+Route::post('vacunas/store/{mascota}', [VacunaController::class, 'store'])->name('vacunas.store');
+Route::delete('vacunas/destroy/{vacuna}', [VacunaController::class, 'destroy'])->name('vacunas.destroy');

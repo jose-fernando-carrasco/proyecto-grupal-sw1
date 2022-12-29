@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Mascota;
 use Illuminate\Http\Request;
 use App\Models\Alertamascota;
+use App\Events\AlertamascotaEvent;
 use App\Http\Requests\RazaRequest;
 use App\Http\Requests\MascotaRequest;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Contracts\Support\Renderable;
+use App\Notifications\AlertamascotaNotification;
 
 class MascotaController extends Controller
 {
@@ -17,7 +21,7 @@ class MascotaController extends Controller
      *
      */
     public function index(): Renderable {
-        $mascotas = Mascota::with("raza")->latest()->paginate();
+        $mascotas = Mascota::with("razaMascota")->latest()->paginate();
         return view("mascotas.index", compact("mascotas"));
     }
 
@@ -40,8 +44,8 @@ class MascotaController extends Controller
      */
     public function store(MascotaRequest $request) {
         $validated = $request->safe()->only(['nombre','color','edad','pedigree','imagen','raza_id','duenho_id']);
-        $image_path = $request->file('pedigree')->store('pedigree');
-        $image_path_imagen = $request->file('imagen')->store('mascotas');
+        $image_path = $request->file('pedigree')->store('pedigree', 'public');
+        $image_path_imagen = $request->file('imagen')->store('mascotas', 'public');
         $validated['pedigree'] = $image_path;
         $validated['imagen'] = $image_path_imagen;
         Mascota::create($validated);
@@ -117,6 +121,13 @@ class MascotaController extends Controller
         if($cantidad == 0)
             return ["",$contenido];
         return [$cantidad,$contenido];
+    }
+
+    public function downloadImage(Mascota $mascota)
+    {
+        $imagePath = Storage::url($mascota->pedigree);
+
+        return response()->download(public_path($imagePath));
     }
 
 }

@@ -14,9 +14,9 @@ class Mascota extends Model
         "raza_id", "nombre", "color", "edad", "duenho_id", "pedigree", "imagen"
     ];
 
-    public function raza(): BelongsTo
+    public function razaMascota(): BelongsTo
     {
-        return $this->belongsTo(Raza::class);
+        return $this->belongsTo(Raza::class, 'raza_id');
     }
 
     public function duenho(){
