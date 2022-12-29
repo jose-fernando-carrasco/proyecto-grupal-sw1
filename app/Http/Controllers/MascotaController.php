@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Events\AlertamascotaEvent;
 use App\Models\Mascota;
 use Illuminate\Http\Request;
 use App\Models\Alertamascota;
-use App\Events\AlertamascotaEvent;
 use App\Http\Requests\RazaRequest;
 use App\Http\Requests\MascotaRequest;
 use Illuminate\Http\RedirectResponse;
@@ -44,10 +44,11 @@ class MascotaController extends Controller
      */
     public function store(MascotaRequest $request) {
         $validated = $request->safe()->only(['nombre','color','edad','pedigree','imagen','raza_id','duenho_id']);
-        $image_path = $request->file('pedigree')->store('pedigree', 'public');
-        $image_path_imagen = $request->file('imagen')->store('mascotas', 'public');
-        $validated['pedigree'] = $image_path;
-        $validated['imagen'] = $image_path_imagen;
+        if ($request->hasFile('imagen')) {
+            $image_path_imagen = $request->file('imagen')->store('mascotas', 'public');
+            $validated['imagen'] = $image_path_imagen;
+            
+        }
         Mascota::create($validated);
 
         session()->flash("success", __("La mascota ha sido creado correctamente"));
@@ -103,31 +104,5 @@ class MascotaController extends Controller
         return redirect(route("mascotas.index"));
     }
 
-    public function createAlerta(){
-        $mascotas = Mascota::where('duenho_id',auth()->user()->id)->get();
-        return view('mascotas.createalerta',compact('mascotas'));
-    }
-
-    public function alertaStore(Request $request){
-        $alerta = Alertamascota::create(['latitud' => $request->latitud,'longitud' => $request->longitud,'detalle' => $request->detalle,'mascota_id' => $request->mascota_id]);
-        broadcast(new AlertamascotaEvent($alerta))->toOthers();
-        return 'Creado con Exito';
-    }
-    
-    public function notifications(){
-        $cantidad = auth()->user()->unreadNotifications->count();
-        $contenido = auth()->user()->notifications;
-        // return $contenido->created_at->format('Y-m-d');
-        if($cantidad == 0)
-            return ["",$contenido];
-        return [$cantidad,$contenido];
-    }
-
-    public function downloadImage(Mascota $mascota)
-    {
-        $imagePath = Storage::url($mascota->pedigree);
-
-        return response()->download(public_path($imagePath));
-    }
 
 }

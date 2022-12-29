@@ -49,7 +49,11 @@
                     <div class="col-4">
                         <label for="pedigree" class="col-sm-12 col-form-label">{{ __("Pedigree") }} :</label>
                         <div class="col-sm-10">
-                            <input type="file" id="pedigree" name="pedigree" class="form-control" />
+                            <select id="pedigree" name="pedigree" class="custom-select">
+                                <option selected>Seleccione una opción</option>
+                                <option {{ (int) old("pedigree", $mascota->pedigree) === 0 ? 'selected' : '' }} value="0">No</option>
+                                <option {{ (int) old("pedigree", $mascota->pedigree) === 1 ? 'selected' : '' }} value="1">Si</option>
+                            </select>
                         </div>
                     </div>
                 </div>

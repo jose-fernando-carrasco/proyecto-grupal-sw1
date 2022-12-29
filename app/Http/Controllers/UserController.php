@@ -13,9 +13,8 @@ class UserController extends Controller
         return view('users.show',compact('user'));
     }
 
-    public function update(Request $request){
+    public function update(User $user, Request $request){
         $request->validate(['name' => 'required', 'email' => 'required', 'password' => 'required', 'password_new' => 'required']);
-        $user = User::find($request->user_id);
         if( password_verify($request->password,$user->password) ){
             $user->name = $request->name;
             $user->email = $request->email;
