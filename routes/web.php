@@ -27,10 +27,12 @@ Route::prefix('users')->controller(UserController::class)->group(function () {
 });
 
 Route::resource("razas", \App\Http\Controllers\RazaController::class)->middleware("auth");
-Route::resource("mascotas", \App\Http\Controllers\MascotaController::class)->middleware("auth");
-// Mascotas
-Route::prefix('alertas-mascotas')->controller(MascotaController::class)->group(function () {
-    Route::get('createAlerta', 'createAlerta')->name('alertas-mascotas.createAlerta');
-    Route::post('alertaStore', 'alertaStore')->name('alertas-mascotas.alertaStore');
-    Route::get('notifications', 'notifications')->name('alertas-mascotas.notifications');
+
+// Mascotas el orden del prefijo importa
+Route::prefix('mascotas')->controller(MascotaController::class)->group(function () {
+    Route::get('createAlerta', 'createAlerta')->name('mascotas.createAlerta');
+    Route::post('alertaStore', 'alertaStore')->name('mascotas.alertaStore');
+    Route::get('notifications', 'notifications')->name('mascotas.notifications');
 });
+Route::resource("mascotas", \App\Http\Controllers\MascotaController::class)->middleware("auth");
+

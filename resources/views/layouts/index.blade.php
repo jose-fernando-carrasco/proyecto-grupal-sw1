@@ -39,7 +39,7 @@
 
             <!-- Nav Item - Usuarios -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html"><i class="fas fa-fw fa-user-alt"></i><span>Usuarios</span></a>
+                <a class="nav-link" href=""><i class="fas fa-fw fa-user-alt"></i><span>Usuarios</span></a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('razas.index') }}"><i class="fas fa-fw fa-user-alt"></i><span>Gestionar razas</span></a>
@@ -61,8 +61,8 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{route('alertas-mascotas.createAlerta')}}">Crear Alerta</a>
-                        <a class="collapse-item" href="">Cards</a>
+                        <a class="collapse-item" href="{{route('mascotas.createAlerta')}}">Crear Alerta</a>
+                        <a class="collapse-item" href="">Ver Notificaciones</a>
                     </div>
                 </div>
             </li>
