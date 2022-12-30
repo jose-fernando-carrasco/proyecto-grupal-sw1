@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
+use App\Models\Raza;
 use App\Models\Mascota;
+use Illuminate\Database\Seeder;
 
 class MascotaSeeder extends Seeder
 {
@@ -14,6 +15,12 @@ class MascotaSeeder extends Seeder
      */
     public function run()
     {
+        Raza::create([
+            'nombre'=> 'Dalmata'
+        ]);
+        Raza::create([
+            'nombre'=> 'Boxer'
+        ]);
         Mascota::create([
             'nombre'    => 'Toby Choqui',
             'color'     => 'blanco con negro',

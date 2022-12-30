@@ -28,7 +28,9 @@ class MascotaRequest extends FormRequest
                 "nombre" => "required|min:2|max:40",
                 "edad" => "required",
                 "color" => "required",
+                "color" => "required",
                 "raza_id" => "required|exists:razas,id",
+                "pedigree" => "required",
                 "duenho_id" => "required|exists:users,id",
             ],
             "PUT" => [
@@ -36,6 +38,7 @@ class MascotaRequest extends FormRequest
                 "edad" => "required",
                 "color" => "required",
                 "raza_id" => "required|exists:razas,id",
+                "pedigree" => "required",
                 "duenho_id" => "required|exists:users,id",
             ],
         };

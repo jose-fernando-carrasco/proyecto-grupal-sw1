@@ -4,6 +4,7 @@ use App\Http\Controllers\AlertaController;
 use App\Http\Controllers\MascotaController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VacunaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,12 @@ Route::resource('users', UserController::class)->except(['edit','destroy', 'inde
 
 Route::resource("razas", \App\Http\Controllers\RazaController::class)->middleware("auth");
 Route::resource("mascotas", \App\Http\Controllers\MascotaController::class)->middleware("auth");
+// Mascotas
+Route::get('mascotas/image-download/{mascota}', [MascotaController::class, 'downloadImage'])->name('mascotas.download.image');
+Route::get('vacunas/index/{mascota}', [VacunaController::class, 'index'])->name('vacunas.index');
+Route::get('vacunas/create/{mascota}', [VacunaController::class, 'create'])->name('vacunas.create');
+Route::post('vacunas/store/{mascota}', [VacunaController::class, 'store'])->name('vacunas.store');
+Route::delete('vacunas/destroy/{vacuna}', [VacunaController::class, 'destroy'])->name('vacunas.destroy');
 
 Route::get('alertas/notifications', [AlertaController::class,'notifications'])->name('alertas.notifications')->middleware("auth");
 Route::resource('alertas', AlertaController::class)->except(['edit','destroy','update', 'show'])->middleware("auth");

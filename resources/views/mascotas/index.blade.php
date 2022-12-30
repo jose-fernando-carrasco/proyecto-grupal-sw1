@@ -21,18 +21,27 @@
             @endif
         <table class="table">
             <thead>
+                <th>Imagen</th>
               <th>Id</th>
               <th>Nombre</th>
               <th>Raza</th>
               <th>Editar</th>
-              <th>Edliminar</th>
+              <th>Eliminar</th>
+              <th>Pedigree</th>
+              <th>Vacuna</th>
             </thead>
             <tbody>
               @foreach ($mascotas as $mascota)
               <tr>
+                <th>
+                    <figure class="figure">
+                        <img  src="storage/{{ $mascota->imagen }}" class="figure-img img-fluid rounded" alt="..."  style="width: 70px; height: 70px;">
+                        <figcaption class="figure-caption">{{ $mascota->nombre }}</figcaption>
+                      </figure>
+                </th>
                 <th >{{ $mascota->id }}</th>
                 <td >{{ $mascota->nombre }}</td>
-                <td >{{ $mascota->raza->nombre }}</td>
+                <td >{{ $mascota->razaMascota->nombre }}</td>
                 <td>
                     <a href="{{ route("mascotas.edit", ["mascota" => $mascota]) }}" class="btn btn-info">{{ __("Editar") }}
                     </a>
@@ -44,6 +53,13 @@
                         <button type="submit" class="btn btn-danger">{{ __("Eliminar") }}
                         </button>
                     </form>
+                </td>
+                <td>
+                    <a href="{{ route('mascotas.download.image',$mascota) }}" target="_blank">Pedigree</a>  
+                </td>
+                <td>
+                    <a href="{{ route("vacunas.index", ["mascota" => $mascota]) }}" class="btn btn-info">{{ __("Vacunas") }}
+                    </a>
                 </td>
               </tr>
               @endforeach
