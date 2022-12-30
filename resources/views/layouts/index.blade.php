@@ -30,8 +30,9 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('dashboard')}}">
-                <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
+                <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-sharp fa-solid fa-dog"></i></div>
                 <div class="sidebar-brand-text mx-3">Mascotas</div>
+                {{-- <i class="fa-sharp fa-solid fa-dog"></i> --}}
             </a>
 
             <!-- Divider -->
@@ -94,7 +95,7 @@
 
             <!-- Sidebar Message -->
             <div class="sidebar-card d-none d-lg-flex">
-                <img class="sidebar-card-illustration mb-2" src="{{asset('img/undraw_rocket.svg')}}" alt="...">
+                <img class="sidebar-card-illustration mb-2 perrito" src="{{asset('img/logoPerro.png')}}" alt="...">
                 <p class="text-center mb-2"><strong>Mascotas </strong>su cuenta contiene anuncios</p>
                 <a class="btn btn-success btn-sm" href="">Actualizate a Premium</a>
             </div>
@@ -127,7 +128,7 @@
                                 aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">Notificaciones</h6>
                                 <div class="cuerpo-Notificaciones"></div>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Ver todas las Notificaciones</a>
+                                <a class="dropdown-item text-center small text-gray-500" href="{{route('alertas.index')}}">Ver todas las Notificaciones</a>
                             </div>
                         </li>
 
