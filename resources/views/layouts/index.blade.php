@@ -62,7 +62,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{route('alertas.create')}}">Crear Alerta</a>
-                        <a class="collapse-item" href="">Ver Notificaciones</a>
+                        <a class="collapse-item" href="{{route('alertas.index')}}">Ver Notificaciones</a>
                     </div>
                 </div>
             </li>

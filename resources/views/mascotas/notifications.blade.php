@@ -21,24 +21,23 @@
             @endif
         <table class="table">
             <thead>
-              <th>Id</th>
-              <th>Nombre</th>
-              <th>Raza</th>
+              <th>Tipo</th>
+              <th>Mascota</th>
+              <th>Dueño</th>
               <th>Editar</th>
               <th>Edliminar</th>
             </thead>
             <tbody>
-              @foreach ($mascotas as $mascota)
+              @foreach ($notifications as $notification)
               <tr>
-                <th >{{ $mascota->id }}</th>
-                <td >{{ $mascota->nombre }}</td>
-                <td >{{ $mascota->raza->nombre }}</td>
+                <th>{{ auth()->user()->getTipo($notification->type) }}</th>
+                <td>{{ $notification->data["mascota"]->mascota["id"]}}</td>
+                <td>Hola</td>
                 <td>
-                    <a href="{{ route("mascotas.edit", ["mascota" => $mascota]) }}" class="btn btn-info">{{ __("Editar") }}
-                    </a>
+                    <a href="" class="btn btn-info">{{ __("Editar") }}</a>
                 </td>
                 <td>
-                    <form class="inline" method="POST" action="{{ route("mascotas.destroy", ["mascota" => $mascota]) }}">
+                    <form class="inline" method="POST" action="">
                         @csrf
                         @method("DELETE")
                         <button type="submit" class="btn btn-danger">{{ __("Eliminar") }}

@@ -47,4 +47,11 @@ class User extends Authenticatable
     public function mascotas(){
         return $this->hasMany(Mascota::class, 'duenho_id');
     }
+
+    public function getTipo($type){
+        if($type == 'App\Notifications\AlertamascotaNotification'){
+            return 'Mascota Perdida';
+        }
+        return 'Otros';
+    }
 }

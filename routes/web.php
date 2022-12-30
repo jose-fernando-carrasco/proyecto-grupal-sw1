@@ -28,4 +28,3 @@ Route::resource("mascotas", \App\Http\Controllers\MascotaController::class)->mid
 
 Route::get('alertas/notifications', [AlertaController::class,'notifications'])->name('alertas.notifications')->middleware("auth");
 Route::resource('alertas', AlertaController::class)->except(['edit','destroy','update', 'show'])->middleware("auth");
-
