@@ -37,7 +37,7 @@ class VacunaController extends Controller
      * @return RedirectResponse
      */
     public function store(VacunaRequest $request) {
-        $validated = $request->safe()->only(['tipo_vacuna','detalle','mascota_id']);
+        $validated = $request->safe()->only(['tipo_vacuna','detalle','mascota_id','fecha']);
         Vacuna::create($validated);
 
         session()->flash("success", __("La vacuna ha sido creado correctamente"));

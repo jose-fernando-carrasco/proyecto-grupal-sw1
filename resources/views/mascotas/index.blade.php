@@ -25,9 +25,9 @@
               <th>Id</th>
               <th>Nombre</th>
               <th>Raza</th>
+              <th>Pedigree</th>
               <th>Editar</th>
               <th>Eliminar</th>
-              <th>Pedigree</th>
               <th>Vacuna</th>
             </thead>
             <tbody>
@@ -43,6 +43,9 @@
                 <td >{{ $mascota->nombre }}</td>
                 <td >{{ $mascota->razaMascota->nombre }}</td>
                 <td>
+                    {{ $mascota->pedigree == 1 ? 'Si' : 'No'}}
+                </td>
+                <td>
                     <a href="{{ route("mascotas.edit", ["mascota" => $mascota]) }}" class="btn btn-info">{{ __("Editar") }}
                     </a>
                 </td>
@@ -53,9 +56,6 @@
                         <button type="submit" class="btn btn-danger">{{ __("Eliminar") }}
                         </button>
                     </form>
-                </td>
-                <td>
-                    <a href="{{ route('mascotas.download.image',$mascota) }}" target="_blank">Pedigree</a>  
                 </td>
                 <td>
                     <a href="{{ route("vacunas.index", ["mascota" => $mascota]) }}" class="btn btn-info">{{ __("Vacunas") }}

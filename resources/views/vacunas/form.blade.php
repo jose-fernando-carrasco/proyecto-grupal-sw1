@@ -24,11 +24,16 @@
                 @csrf
                 <input type="hidden" name="mascota_id" id="mascota_id" value="{{ $mascota->id }}">
                 <div class="row">
-                    
+                    <div class="col-3">
+                        <label for="fecha" class="col-sm-12 col-form-label">{{ __("fecha") }} :</label>
+                        <div class="col-sm-10">
+                            <input type="date" id="fecha" name="fecha" value="{{ old("fecha") }}" class="form-control">
+                        </div>
+                    </div>
                     <div class="col-4">
                         <label for="tipo_vacuna" class="leading-7 text-sm text-gray-600">{{ __("Raza") }} :</label>
                         <select id="tipo_vacuna" name="tipo_vacuna" class="custom-select">
-                            <option selected>Seleccione una opción</option>
+                            <option selected  value="">Seleccione una opción</option>
                             <option {{ (int) old("tipo_vacuna") === "Vacuna contra el distemper" ? 'selected' : '' }} value="Vacuna contra el distemper">Vacuna contra el distemper</option>
                             <option {{ (int) old("tipo_vacuna") === "Vacuna contra parvovirus" ? 'selected' : '' }} value="Vacuna contra parvovirus">Vacuna contra parvovirus</option>
                             <option {{ (int) old("tipo_vacuna") === "Vacuna contra la hepatitis infecciosa canina o adenovirus canino 2 (AVC-2)" ? 'selected' : '' }} value="Vacuna contra la hepatitis infecciosa canina o adenovirus canino 2 (AVC-2)">Vacuna contra la hepatitis infecciosa canina o adenovirus canino 2 (AVC-2)</option>
@@ -36,7 +41,7 @@
                             <option {{ (int) old("tipo_vacuna") === "Vacuna contra la rabia" ? 'selected' : '' }} value="Vacuna contra la rabia">Vacuna contra la rabia</option>
                         </select>
                     </div>
-                    <div class="col-8">
+                    <div class="col-5">
                         <label for="detalle" class="col-sm-12 col-form-label">{{ __("Detalle") }} :</label>
                         <div class="col-sm-10">
                             <textarea class="form-control" id="detalle" name="detalle" rows="3"></textarea>

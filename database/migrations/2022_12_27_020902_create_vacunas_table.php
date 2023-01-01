@@ -22,6 +22,7 @@ class CreateVacunasTable extends Migration
                          'Vacuna contra la leptospirosis',
                          'Vacuna contra la rabia'])->nullable(false);
             $table->string('detalle', 100)->nullable(true);
+            $table->date('fecha')->nullable()->default(new DateTime());
             $table->unsignedBigInteger('mascota_id');
             $table->foreign('mascota_id')
                     ->references('id')

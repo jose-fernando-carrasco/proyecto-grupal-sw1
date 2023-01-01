@@ -9,7 +9,7 @@ class Vacuna extends Model
 {
     use HasFactory;
     protected $fillable = [
-        "mascota_id", "detalle", "tipo_vacuna"
+        "mascota_id", "detalle", "tipo_vacuna", "fecha"
     ];
 
 }

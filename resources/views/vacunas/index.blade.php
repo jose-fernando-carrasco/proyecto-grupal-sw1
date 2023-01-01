@@ -24,6 +24,7 @@
               <th>Id</th>
               <th>Tipo Vacuna</th>
               <th>Detalle</th>
+              <th>Fecha registro</th>
               <th>Eliminar</th>
             </thead>
             <tbody>
@@ -33,6 +34,7 @@
                 <th >{{ $vacuna->id }}</th>
                 <td >{{ $vacuna->tipo_vacuna }}</td>
                 <td >{{ $vacuna->detalle }}</td>
+                <td >{{ $vacuna->fecha }}</td>
                 
                 <td>
                     <form class="inline" method="POST" action="{{ route("vacunas.destroy", ["vacuna" => $vacuna]) }}">

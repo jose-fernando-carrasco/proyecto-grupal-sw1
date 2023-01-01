@@ -85,7 +85,12 @@ class MascotaController extends Controller
      * @return RedirectResponse
      */
     public function update(MascotaRequest $request, Mascota $mascota) {
-        $validated = $request->safe()->only(['nombre']);
+        $validated = $request->safe()->only(['nombre','color','edad','pedigree','imagen','raza_id','duenho_id']);
+        if ($request->hasFile('imagen')) {
+            $image_path_imagen = $request->file('imagen')->store('mascotas', 'public');
+            $validated['imagen'] = $image_path_imagen;
+            
+        }
         $mascota->update($validated);
 
         session()->flash("success", __("La mascota ha sido actualizado correctamente"));

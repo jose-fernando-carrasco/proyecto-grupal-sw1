@@ -28,11 +28,13 @@ class VacunaRequest extends FormRequest
             "POST" => [
                 "tipo_vacuna" => "required",
                 "mascota_id" => "required",
+                "fecha" => "required",
                 "detalle" => "max:150",
             ],
             "PUT" => [
                 "tipo_vacuna" => "required",
                 "mascota_id" => "required",
+                "fecha" => "required",
                 "detalle" => "max:150",
             ],
         };

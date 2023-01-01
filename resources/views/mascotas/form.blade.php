@@ -37,7 +37,7 @@
                     <div class="col-4">
                         <label for="color" class="col-sm-12 col-form-label">{{ __("Color") }} :</label>
                         <div class="col-sm-10">
-                            <input type="color" id="color" name="color" value="{{ old("color", $mascota->color) }}" class="form-control">
+                            <input type="text" id="color" name="color" value="{{ old("color", $mascota->color) }}" class="form-control">
                         </div>
                     </div>
                     <div class="col-4">
@@ -58,11 +58,13 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-4 custom-file">
                         <label for="imagen" class="col-sm-12 col-form-label">{{ __("Imagen") }} :</label>
                         <div class="col-sm-10">
-                            <input type="file" id="imagen" name="imagen" class="form-control" />
+                            <input type="file" id="imagen" name="imagen" class="form-control" >
+                            <label class="custom-file-label" for="imagen">{{ $mascota->imagen }}</label>
                         </div>
+                      
                     </div>
                     <div class="col-4">
                         <label for="duenho_id" class="leading-7 text-sm text-gray-600">{{ __("Dueño") }} :</label>
