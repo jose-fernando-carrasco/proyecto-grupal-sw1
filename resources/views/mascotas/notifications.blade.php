@@ -8,44 +8,35 @@
 
 <div class="card">
     <div class="card-header">
-        {{ __('Mascotas') }}
+        {{ __('Alertas de Mascotas') }}
     </div>
     <div class="card-body">
-        <a href="{{ route("mascotas.create") }}" class="btn btn-primary">
-            {{ __("Crear un nueva mascota") }}
-        </a>
-            @if (session()->has("success"))
-                <div class="alert alert-success" role="alert">
-                    {{ session("success") }}
-                </div>
-            @endif
         <table class="table">
             <thead>
-              <th>Id</th>
-              <th>Nombre</th>
-              <th>Raza</th>
-              <th>Editar</th>
+              <th>Tipo</th>
+              <th>Mascota</th>
+              <th>Dueño</th>
+              <th>Ver</th>
               <th>Edliminar</th>
             </thead>
             <tbody>
-              @foreach ($mascotas as $mascota)
-              <tr>
-                <th >{{ $mascota->id }}</th>
-                <td >{{ $mascota->nombre }}</td>
-                <td >{{ $mascota->raza->nombre }}</td>
-                <td>
-                    <a href="{{ route("mascotas.edit", ["mascota" => $mascota]) }}" class="btn btn-info">{{ __("Editar") }}
-                    </a>
-                </td>
-                <td>
-                    <form class="inline" method="POST" action="{{ route("mascotas.destroy", ["mascota" => $mascota]) }}">
-                        @csrf
-                        @method("DELETE")
-                        <button type="submit" class="btn btn-danger">{{ __("Eliminar") }}
-                        </button>
-                    </form>
-                </td>
-              </tr>
+              @foreach ($notifications as $notification)
+                <tr>
+                    <th>{{auth()->user()->getTipo($notification->type)}}</th>
+                    <td>{{$notification->data["mascota"]["nombre"]}}</td>
+                    <td>{{$notification->data["duenho"]["name"]}}</td>
+                    <td>
+                        <a href="{{route('alertas.show',$notification->id)}}" class="btn btn-info">{{__("ver")}}</a>
+                    </td>
+                    <td>
+                        <form class="inline" method="POST" action="">
+                            @csrf
+                            @method("DELETE")
+                            <button type="submit" class="btn btn-danger">{{ __("Eliminar") }}
+                            </button>
+                        </form>
+                    </td>
+                </tr>
               @endforeach
               
             </tbody>

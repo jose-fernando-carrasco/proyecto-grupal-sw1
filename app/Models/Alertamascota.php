@@ -13,4 +13,5 @@ class Alertamascota extends Model
     public function mascota(){
         return $this->belongsTo(Mascota::class);
     }
+
 }

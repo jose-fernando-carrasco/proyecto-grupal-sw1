@@ -73,6 +73,8 @@ Formulario.addEventListener("submit", event => {
             console.log(error);
             console.log();
         });
+
+
     }
 
 });
