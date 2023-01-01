@@ -11,6 +11,9 @@
 
 @section('content')
     <div id ="map"> </div>
+    <input type="hidden" class="latitud" value="{{$alerta->data["latitud"]}}">
+    <input type="hidden" class="longitud" value="{{$alerta->data["longitud"]}}">
+    <img class="photo" src="{{asset(Auth()->user()->photo)}}">
 @endsection
 
 @section('js')

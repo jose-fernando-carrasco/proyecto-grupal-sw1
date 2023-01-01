@@ -45,8 +45,9 @@ class AlertaController extends Controller
     }
 
 
-    public function mapa_alerta(){
-        return view('mascotas.mapa-alerta');
+    public function mapa_alerta($alerta_id){
+        $alerta = auth()->user()->notifications->where('id',$alerta_id)->first();
+        return view('mascotas.mapa-alerta',compact('alerta'));
     }
 
 }

@@ -21,7 +21,7 @@
         <h3>Dueño: {{$alerta->data["duenho"]["name"]}}</h3>
         <img class="photo-duenho" src="{{asset(Auth()->user()->photo)}}">
         <div></div>
-        <a href="{{route('alertas.mapa-alerta')}}" class="btn btn-danger mapa">ver en mapa</a>
+        <a href="{{route('alertas.mapa-alerta',$alerta->id)}}" class="btn btn-danger mapa">ver en mapa</a>
     </div>
     <div class="col-1"></div>
   </div>
