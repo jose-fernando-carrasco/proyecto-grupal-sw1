@@ -18,9 +18,11 @@ class CreateRegistroAdopcionsTable extends Migration
         Schema::create('registro__adopcion', function (Blueprint $table) {
             $table->id();
             $table->date('fecha');
+            $table->string('descripcion');
             $table->string('domicilio');
             $table->double('longitudDom');
             $table->double('latitudDom');
+            $table->boolean('estado')->default(false); // false = adopcion, true = adoptado (no se puede cambiar
             // $table->enum('estado',['adoptado, adopcion'])->nullable()->default('adopcion');
             $table->foreignId('duenho_id')->constrained('users');
             $table->foreignId('mascota_id')->constrained();

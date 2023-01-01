@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\LoginController;
+use App\Http\Controllers\MascotaController;
+use App\Http\Controllers\RegistroAdopcionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +23,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('register',[LoginController::class,'register']);
 Route::post('login',[LoginController::class,'login']);
 
+Route::get('mascotas/{id}', [MascotaController::class, 'api_show']);
+Route::post('adopciones/store', [RegistroAdopcionController::class, 'store']);
