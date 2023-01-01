@@ -61,8 +61,7 @@
                     <div class="col-4 custom-file">
                         <label for="imagen" class="col-sm-12 col-form-label">{{ __("Imagen") }} :</label>
                         <div class="col-sm-10">
-                            <input type="file" id="imagen" name="imagen" class="form-control" >
-                            <label class="custom-file-label" for="imagen">{{ $mascota->imagen }}</label>
+                            <input type="file" id="imagen" name="imagen" class="form-control-file" >
                         </div>
                       
                     </div>
