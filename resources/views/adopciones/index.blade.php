@@ -31,7 +31,9 @@
                         ...
                     </p>
                     {{--  <a href="" class="card-link">Ver</a>  --}}
-                   <a href="{{route('adopciones.show', $adopcion->id)}}"
+                </div>
+                <div class="card-footer m-0 pt-0">
+                    <a href="{{route('adopciones.show', $adopcion->id)}}"
                         class="text-white">
                         <button class="btn btn-primary">
                            Ver más detalles

@@ -61,7 +61,7 @@
                                 <img
                                     class="card-img-top"
                                     {{--  src="https://2.bp.blogspot.com/-DvqWIDQO5-k/T3dasQybrUI/AAAAAAAAAW8/yQ3h12gqCq8/s1600/20120313-_MG_8181.jpg"  --}}
-                                    :src="mascota.photo"
+                                    :src="getPhoto"
                                     alt="Dog"
                                     {{--  width="250px"  --}}
                                     height="200px"
