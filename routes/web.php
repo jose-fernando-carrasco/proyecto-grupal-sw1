@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AlertaController;
 use App\Http\Controllers\MascotaController;
+use App\Http\Controllers\RegistroAdopcionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VacunaController;
@@ -36,3 +37,5 @@ Route::delete('vacunas/destroy/{vacuna}', [VacunaController::class, 'destroy'])-
 Route::get('alertas/notifications', [AlertaController::class,'notifications'])->name('alertas.notifications')->middleware("auth");
 Route::get('alertas/mapa-alerta/{alerta_id}', [AlertaController::class,'mapa_alerta'])->name('alertas.mapa-alerta')->middleware("auth");
 Route::resource('alertas', AlertaController::class)->except(['edit','destroy','update'])->parameters(['alertas' => 'alerta_id'])->middleware("auth");
+
+Route::resource('adopciones', RegistroAdopcionController::class)->middleware("auth");
