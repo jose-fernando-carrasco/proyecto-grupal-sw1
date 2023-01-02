@@ -141,8 +141,14 @@ Alpine.data('adopciones', () => ({
 
         // console.log(data)
 
-    }
+    },
 
+    getPhoto(){
+        if(!this.mascota.photo)
+            return `${window.origin}/img/dog-default.jpg`
+        
+        return this.mascota.photo
+    }
 
 
 }))
