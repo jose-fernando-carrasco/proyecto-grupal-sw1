@@ -20,7 +20,7 @@ class CreateMascotasTable extends Migration
             $table->string('nombre');
             $table->string('color');
             $table->integer('edad');
-            $table->string('imagen',150)->nullable(true);
+            $table->string('imagen',500)->nullable(true);
             $table->boolean('pedigree');
             $table->unsignedBigInteger('duenho_id');
             $table->unsignedBigInteger('raza_id');

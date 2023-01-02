@@ -22,9 +22,7 @@ class RegistroAdopcionController extends Controller
                         ->with('mascota')
                         ->get();
                         // ->select('id', 'mascota_id','mascota.nombre as nombre')
-        //get mascotas
-        dd($adopciones);
-        return view('adopciones.index');
+        return view('adopciones.index', compact('adopciones'));
     }
 
     /**
@@ -69,9 +67,13 @@ class RegistroAdopcionController extends Controller
      * @param  \App\Models\Registro_Adopcion  $registro_Adopcion
      * @return \Illuminate\Http\Response
      */
-    public function show(Registro_Adopcion $registro_Adopcion)
+    public function show($id)
     {
-        //
+        $adopcion = Registro_Adopcion::where('id', '=', $id)
+                        ->with('mascota')
+                        ->first();
+
+        return view('adopciones.show', ['adopcion' => $adopcion]);
     }
 
     /**

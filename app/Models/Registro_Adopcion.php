@@ -26,4 +26,9 @@ class Registro_Adopcion extends Model
     public function mascota(){
         return $this->belongsTo(Mascota::class, 'mascota_id');
     }
+
+    //get duenho
+    public function duenho(){
+        return $this->belongsTo(User::class, 'duenho_id');
+    }
 }

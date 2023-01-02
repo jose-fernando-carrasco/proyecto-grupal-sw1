@@ -8,6 +8,12 @@
     #map {
         height: 90%;
     }
+
+
+    img {
+        object-fit: cover !important;
+    }
+
 </style>
 @endsection
 
@@ -53,12 +59,12 @@
                             </select>
                             <div class="card m-2" style="width: 17rem;">
                                 <img
-                                    class="img-fluid"
+                                    class="card-img-top"
                                     {{--  src="https://2.bp.blogspot.com/-DvqWIDQO5-k/T3dasQybrUI/AAAAAAAAAW8/yQ3h12gqCq8/s1600/20120313-_MG_8181.jpg"  --}}
                                     :src="mascota.photo"
                                     alt="Dog"
                                     {{--  width="250px"  --}}
-                                    {{--  height="200px"  --}}
+                                    height="200px"
                                 >                    
                                 <div class="card-body">
                                     <h4 x-text="mascota.nombre" class="card-title"></h5>
