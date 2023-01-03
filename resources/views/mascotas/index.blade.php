@@ -35,7 +35,7 @@
               <tr>
                 <th>
                     <figure class="figure">
-                        <img  src="storage/{{ $mascota->imagen }}" class="figure-img img-fluid rounded" alt="..."  style="width: 70px; height: 70px;">
+                        <img  src="{{asset($mascota->imagen)}}" class="figure-img img-fluid rounded" alt="..."  style="width: 70px; height: 70px;">
                         <figcaption class="figure-caption">{{ $mascota->nombre }}</figcaption>
                       </figure>
                 </th>
