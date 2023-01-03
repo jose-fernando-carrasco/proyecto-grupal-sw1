@@ -34,8 +34,9 @@ Route::get('vacunas/create/{mascota}', [VacunaController::class, 'create'])->nam
 Route::post('vacunas/store/{mascota}', [VacunaController::class, 'store'])->name('vacunas.store');
 Route::delete('vacunas/destroy/{vacuna}', [VacunaController::class, 'destroy'])->name('vacunas.destroy');
 
+Route::post('alertas/update2', [AlertaController::class,'update2'])->name('alertas.update2')->middleware("auth");
 Route::get('alertas/notifications', [AlertaController::class,'notifications'])->name('alertas.notifications')->middleware("auth");
 Route::get('alertas/mapa-alerta/{alerta_id}', [AlertaController::class,'mapa_alerta'])->name('alertas.mapa-alerta')->middleware("auth");
-Route::resource('alertas', AlertaController::class)->except(['edit','destroy','update'])->parameters(['alertas' => 'alerta_id'])->middleware("auth");
+Route::resource('alertas', AlertaController::class)->except(['edit','destroy','update','store'])->parameters(['alertas' => 'alerta_id'])->middleware("auth");
 
 Route::resource('adopciones', RegistroAdopcionController::class)->middleware("auth");
