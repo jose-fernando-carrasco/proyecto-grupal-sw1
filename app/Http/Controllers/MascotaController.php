@@ -97,7 +97,6 @@ class MascotaController extends Controller
         if ($request->hasFile('imagen')) {
             $image_path_imagen = $request->file('imagen')->store('mascotas', 'public');
             $validated['imagen'] = $image_path_imagen;
-            
         }
         $mascota->update($validated);
 
