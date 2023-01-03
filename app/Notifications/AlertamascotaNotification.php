@@ -11,6 +11,7 @@ use Illuminate\Notifications\Notification;
 class AlertamascotaNotification extends Notification
 {
     use Queueable;
+    public $alerta;
 
     /**
      * Create a new notification instance.
@@ -60,6 +61,7 @@ class AlertamascotaNotification extends Notification
             'longitud' => $this->alerta->longitud,
             'detalle'  => $this->alerta->detalle,
             'mascota'  => $this->alerta->mascota,
+            'raza'     => $this->alerta->mascota->razaMascota,
             'duenho'   => $this->alerta->mascota->duenho
         ];
     }

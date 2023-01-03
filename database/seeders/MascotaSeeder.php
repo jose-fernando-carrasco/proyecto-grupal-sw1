@@ -24,7 +24,7 @@ class MascotaSeeder extends Seeder
         Mascota::create([
             'nombre'    => 'Toby Choqui',
             'color'     => 'blanco con negro',
-            'imagen'     => 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/golden-retriever-royalty-free-image-506756303-1560962726.jpg?crop=0.672xw:1.00xh;0.166xw,0&resize=640:*',
+            'imagen'     => 'https://cdn.wamiz.fr/cdn-cgi/image/format=auto,quality=80,width=400,height=400,fit=cover/animal/breed/pictures/61ceddb5ecedf226632820.jpg',
             'edad'      => 4, //años
             'pedigree'  => true,
             'duenho_id' => 1, // Fernando
@@ -34,7 +34,7 @@ class MascotaSeeder extends Seeder
         Mascota::create([
             'nombre'    => 'Danger',
             'color'     => 'cafe con blanco',
-            'imagen'    => 'https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-08/220805-border-collie-play-mn-1100-82d2f1.jpg',
+            'imagen'    => 'https://misanimales.com/wp-content/uploads/2021/11/perro-boxer-fondo-blanco.jpg',
             'edad'      => 2,//años
             'pedigree'  => true,
             'duenho_id' => 2, // Daniela
