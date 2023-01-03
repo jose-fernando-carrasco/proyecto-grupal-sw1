@@ -26,5 +26,8 @@ window.Echo = new Echo({
     wsHost: window.location.hostname,
     wsPort: 6001,
     forceTLS: false,
-    disableStats: true
+    disableStats: true,
+    cluster: process.env.MIX_PUSHER_APP_CLUSTER
 });
+
+console.log('cargooo');
