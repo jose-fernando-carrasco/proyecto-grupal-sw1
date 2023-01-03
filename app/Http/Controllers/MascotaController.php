@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use stdClass;
+use App\Models\Raza;
 use App\Models\User;
 use App\Models\Mascota;
 use Illuminate\Http\Request;
@@ -115,30 +116,121 @@ class MascotaController extends Controller
         session()->flash("success", __("La mascota ha sido eliminado correctamente"));
         return redirect(route("mascotas.index"));
     }
-
+    
     public function listarMascotas(){
-        $mascotas = Mascota::select('id','nombre','imagen','color','pedigree')->get();
+        $mascotas = Mascota::with('razaMascota','duenho','alertas')->select('id','nombre','imagen','color','pedigree','raza_id','duenho_id')->get();
         $arrayMascotas  = array();
         foreach ($mascotas as $mascota) {
-            if ($mascota->duenho_id) {
+            if ($mascota->duenho_id == null) {
                 $objMascota = new stdClass();
                 $objMascota->nombre = $mascota->nombre  ;
                 $objMascota->imagen = $mascota->imagen  ;
                 $objMascota->pedigree = $mascota->pedigree  ;
                 $objMascota->color =  $mascota->color  ;
                 $objMascota->edad =  $mascota->edad  ;
-                $objMascota->tipo =  'Perdido'  ;
-            }else{
-                $objMascota = new stdClass();
-                $objMascota->nombre = $mascota->nombre  ;
-                $objMascota->imagen = $mascota->imagen  ;
-                $objMascota->pedigree = $mascota->pedigree  ;
-                $objMascota->color =  $mascota->color  ;
-                $objMascota->edad =  $mascota->edad  ;
-                $objMascota->tipo =  'Encontrado'  ;
-            }
+                $objMascota->estado =  'Encontrada'  ;
+                $objMascota->raza =  $mascota->razaMascota->nombre  ;
+                $objMascota->duenho =  $mascota->duenho ? $mascota->duenho->name : '' ;
             array_push($arrayMascotas,$objMascota);
+
+            }else if(count($mascota->alertas) > 0){
+                $objMascota = new stdClass();
+                $objMascota->nombre = $mascota->nombre  ;
+                $objMascota->imagen = $mascota->imagen  ;
+                $objMascota->pedigree = $mascota->pedigree  ;
+                $objMascota->color =  $mascota->color  ;
+                $objMascota->edad =  $mascota->edad  ;
+                $objMascota->estado =  'Encontrada'  ;
+                $objMascota->raza =  $mascota->razaMascota->nombre  ;
+                $objMascota->duenho =  $mascota->duenho ? $mascota->duenho->name : '' ;
+            array_push($arrayMascotas,$objMascota);
+
+            }
         }
         return response()->json($arrayMascotas);
+    }
+
+
+    public function listarMapa(){
+        $mascotas = Mascota::with('razaMascota','duenho','alertas')->select('id','nombre','imagen','color','pedigree','raza_id','duenho_id')->get();
+        $arrayMascotas  = array();
+        foreach ($mascotas as $mascota) {
+            if ($mascota->duenho_id == null) {
+                $objMascota = new stdClass();
+                $objMascota->nombre = $mascota->nombre  ;
+                $objMascota->imagen = $mascota->imagen  ;
+                $objMascota->pedigree = $mascota->pedigree  ;
+                $objMascota->color =  $mascota->color  ;
+                $objMascota->edad =  $mascota->edad  ;
+                $objMascota->estado =  'Encontrada'  ;
+                $objMascota->raza =  $mascota->razaMascota->nombre  ;
+                $objMascota->duenho =  $mascota->duenho ? $mascota->duenho->name : '' ;
+                $objMascota->latitud =  $mascota->latitud  ;
+                $objMascota->longitud =  $mascota->longitud  ;
+            array_push($arrayMascotas,$objMascota);
+
+            }else if(count($mascota->alertas) > 0){
+                $objMascota = new stdClass();
+                $objMascota->nombre = $mascota->nombre  ;
+                $objMascota->imagen = $mascota->imagen  ;
+                $objMascota->pedigree = $mascota->pedigree  ;
+                $objMascota->color =  $mascota->color  ;
+                $objMascota->edad =  $mascota->edad  ;
+                $objMascota->estado =  'Encontrada'  ;
+                $objMascota->raza =  $mascota->razaMascota->nombre  ;
+                $objMascota->duenho =  $mascota->duenho ? $mascota->duenho->name : '' ;
+                $objMascota->latitud =  $mascota->altertas[0]->latitud  ;
+                $objMascota->longitud =  $mascota->altertas[0]->longitud  ;
+            array_push($arrayMascotas,$objMascota);
+
+            }
+        }
+        return response()->json($arrayMascotas);
+    }
+    public function listarAgregadas($user_id){
+        $mascotas = Mascota::with('razaMascota','duenho','alertas')->select('id','nombre','imagen','color','pedigree','raza_id','duenho_id')->where('duenho_id',$user_id)->get();
+        $arrayMascotas  = array();
+        foreach ($mascotas as $mascota) {
+                $objMascota = new stdClass();
+                $objMascota->nombre = $mascota->nombre  ;
+                $objMascota->imagen = $mascota->imagen  ;
+                $objMascota->pedigree = $mascota->pedigree  ;
+                $objMascota->color =  $mascota->color  ;
+                $objMascota->edad =  $mascota->edad  ;
+                $objMascota->estado =  'Encontrada'  ;
+                $objMascota->raza =  $mascota->razaMascota->nombre  ;
+                $objMascota->duenho =  $mascota->duenho ? $mascota->duenho->name : '' ;
+                array_push($arrayMascotas,$objMascota);
+
+        }
+        return response()->json($arrayMascotas);
+    }
+    public function listarRazas(){
+        $razas = Raza::select('id','nombre')->get();
+        return response()->json($razas);
+    }
+    public function registrar(Request $request){
+        $mascota = new Mascota;
+        $mascota->raza_id = $request->raza_id;
+        $mascota->color = $request->color;
+        $mascota->imagen = $request->imagen;
+        $mascota->latitud = $request->latitud;
+        $mascota->longitud = $request->longitud;
+        $mascota->longitud = $request->longitud;
+        $mascota->save();
+        return response()->json($mascota);
+    }
+
+    public function registrarMascota(Request $request){
+        $mascota = new Mascota;
+        $mascota->raza_id = $request->raza_id;
+        $mascota->color = $request->color;
+        $mascota->imagen = $request->imagen;
+        $mascota->pedigree = $request->pedigree;
+        $mascota->nombre = $request->nombre;
+        $mascota->edad = $request->edad;
+        $mascota->duenho_id = $request->duenho_id;
+        $mascota->save();
+        return response()->json($mascota);
     }
 }
