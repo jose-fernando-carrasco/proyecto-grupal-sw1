@@ -40,3 +40,4 @@ Route::get('alertas/mapa-alerta/{alerta_id}', [AlertaController::class,'mapa_ale
 Route::resource('alertas', AlertaController::class)->except(['edit','destroy','update','store'])->parameters(['alertas' => 'alerta_id'])->middleware("auth");
 
 Route::resource('adopciones', RegistroAdopcionController::class)->middleware("auth");
+
