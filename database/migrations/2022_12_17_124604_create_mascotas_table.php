@@ -19,9 +19,13 @@ class CreateMascotasTable extends Migration
             $table->id();
             $table->string('nombre')->nullable(true);
             $table->string('color')->nullable(true);
+            $table->string('caracteristicas')->nullable(true);
+            $table->string('telefono_referencia')->nullable(true);
             $table->integer('edad')->nullable(true);
             $table->string('imagen',500)->nullable(true);
             $table->boolean('pedigree')->nullable(true);
+            $table->double('latitud')->nullable(true);
+            $table->double('longitud')->nullable(true);
             $table->unsignedBigInteger('duenho_id')->nullable(true);
             $table->unsignedBigInteger('raza_id')->nullable(true);
 
