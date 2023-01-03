@@ -29,12 +29,12 @@
                         <a href="{{route('alertas.show',$notification->id)}}" class="btn btn-info">{{__("ver")}}</a>
                     </td>
                     <td>
-                        <form class="inline" method="POST" action="">
+                        {{-- <form class="inline" method="POST" action="">
                             @csrf
                             @method("DELETE")
                             <button type="submit" class="btn btn-danger">{{ __("Eliminar") }}
                             </button>
-                        </form>
+                        </form> --}}
                     </td>
                 </tr>
               @endforeach
