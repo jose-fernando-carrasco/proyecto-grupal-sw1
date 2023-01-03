@@ -52,7 +52,7 @@
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <div class="sidebar-heading">Interface</div>
+            <div class="sidebar-heading">Mascotas</div>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
@@ -78,23 +78,6 @@
                         <a class="collapse-item" href="{{route('adopciones.create')}}">Poner en Adopción</a>
                         <a class="collapse-item" href="{{route('adopciones.index')}}">Mascotas en adopción</a>
                         {{--  <a class="collapse-item" href="{{route('alertas.index')}}">Ver Notificaciones</a>  --}}
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="">Colors</a>
-                        <a class="collapse-item" href="">Borders</a>
-                        <a class="collapse-item" href="">Animations</a>
-                        <a class="collapse-item" href="">Other</a>
                     </div>
                 </div>
             </li>
