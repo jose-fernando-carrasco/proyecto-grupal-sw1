@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use stdClass;
 use App\Models\User;
-use App\Events\AlertamascotaEvent;
 use App\Models\Mascota;
 use Illuminate\Http\Request;
 use App\Models\Alertamascota;
+use App\Events\AlertamascotaEvent;
 use App\Http\Requests\RazaRequest;
 use App\Http\Requests\MascotaRequest;
 use Illuminate\Http\RedirectResponse;
@@ -109,5 +110,29 @@ class MascotaController extends Controller
         return redirect(route("mascotas.index"));
     }
 
-
+    public function listarMascotas(){
+        $mascotas = Mascota::select('id','nombre','imagen','color','pedigree')->get();
+        $arrayMascotas  = array();
+        foreach ($mascotas as $mascota) {
+            if ($mascota->duenho_id) {
+                $objMascota = new stdClass();
+                $objMascota->nombre = $mascota->nombre  ;
+                $objMascota->imagen = $mascota->imagen  ;
+                $objMascota->pedigree = $mascota->pedigree  ;
+                $objMascota->color =  $mascota->color  ;
+                $objMascota->edad =  $mascota->edad  ;
+                $objMascota->tipo =  'Perdido'  ;
+            }else{
+                $objMascota = new stdClass();
+                $objMascota->nombre = $mascota->nombre  ;
+                $objMascota->imagen = $mascota->imagen  ;
+                $objMascota->pedigree = $mascota->pedigree  ;
+                $objMascota->color =  $mascota->color  ;
+                $objMascota->edad =  $mascota->edad  ;
+                $objMascota->tipo =  'Encontrado'  ;
+            }
+            array_push($arrayMascotas,$objMascota);
+        }
+        return response()->json($arrayMascotas);
+    }
 }

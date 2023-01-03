@@ -38,5 +38,13 @@ class MascotaSeeder extends Seeder
             'duenho_id' => 2, // Daniela
             'raza_id' => 2 // Boxer
         ]);
+
+        Mascota::create([
+            'nombre'    => 'Medusa',
+            'color'     => 'blanco',
+            'edad'      => 2,//años
+            'pedigree'  => true,
+            'raza_id' => 2 // Boxer
+        ]);
     }
 }
