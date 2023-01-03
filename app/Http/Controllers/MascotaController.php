@@ -66,6 +66,12 @@ class MascotaController extends Controller
         return view("mascotas.show", compact("mascota"));
     }
 
+    public function api_show($id) {
+        $mascota = Mascota::with("razaMascota")->with('duenho')->find($id);
+
+        return response()->json($mascota, 200);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
