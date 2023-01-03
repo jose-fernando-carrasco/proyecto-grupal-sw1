@@ -95,8 +95,9 @@ class MascotaController extends Controller
     public function update(MascotaRequest $request, Mascota $mascota) {
         $validated = $request->safe()->only(['nombre','color','edad','pedigree','imagen','raza_id','duenho_id']);
         if ($request->hasFile('imagen')) {
-            $image_path_imagen = $request->file('imagen')->store('mascotas', 'public');
-            $validated['imagen'] = $image_path_imagen;
+            $image_path_imagen =  $request->file('file')->store('public/mascotas'); 
+            $imagen = Storage::url($image_path_imagen);
+            $validated['imagen'] = $imagen;
         }
         $mascota->update($validated);
 
