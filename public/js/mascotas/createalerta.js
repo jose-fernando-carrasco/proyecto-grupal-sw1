@@ -55,7 +55,7 @@ Formulario.addEventListener("submit", event => {
         });
     } else {
         // console.log(`[${latitud},${longitud}] detalle: ${input.value} mascota: ${elegido.value}`);
-        axios.post('/alertas', { //store
+        axios.post('/alertas/update2', { //store
             latitud: latitud,
             longitud: longitud,
             detalle: input.value,

@@ -17,7 +17,7 @@ class AlertaController extends Controller
         return view('mascotas.notifications',compact('notifications'));
     }
 
-    public function store(Request $request){
+    public function update2(Request $request){
         $alerta = Alertamascota::create(['latitud' => $request->latitud,'longitud' => $request->longitud,'detalle' => $request->detalle,'mascota_id' => $request->mascota_id]);
         broadcast(new AlertamascotaEvent($alerta))->toOthers();
         return 'Creado con Exito';
