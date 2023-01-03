@@ -197,7 +197,8 @@ class MascotaController extends Controller
                 $objMascota->pedigree = $mascota->pedigree  ;
                 $objMascota->color =  $mascota->color  ;
                 $objMascota->edad =  $mascota->edad  ;
-                $objMascota->raza =  $mascota->razaMascota->nombre;
+                $objMascota->estado =  'Mascota'  ;
+                $objMascota->raza =  $mascota->razaMascota->nombre  ;
                 $objMascota->duenho =  $mascota->duenho ? $mascota->duenho->name : '' ;
                 array_push($arrayMascotas,$objMascota);
 
