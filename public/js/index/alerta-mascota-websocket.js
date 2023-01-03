@@ -48,7 +48,8 @@ function cicloNotifications(notifications) {
 }
 
 function ingresarNotification(notification) {
-    const plantillaHTML = `<a class = "dropdown-item d-flex align-items-center" href = "alertas/${notification.id}" >
+    const url = `${window.origin}/alertas/${notification.id}`
+    const plantillaHTML = `<a class = "dropdown-item d-flex align-items-center" href = "${url}" >
     <div class = "mr-3" ><div class = "icon-circle bg-primary"><i class = "fas fa-solid fa-paw"></i></div></div><div>
     <div class = "small text-gray-500">${notification.created_at}</div>
     <span class = "font-weight-bold">${notification.data.detalle}</span></div>
