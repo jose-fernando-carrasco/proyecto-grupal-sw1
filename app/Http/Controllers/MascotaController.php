@@ -140,7 +140,7 @@ class MascotaController extends Controller
                 $objMascota->pedigree = $mascota->pedigree  ;
                 $objMascota->color =  $mascota->color  ;
                 $objMascota->edad =  $mascota->edad  ;
-                $objMascota->estado =  'Encontrada'  ;
+                $objMascota->estado =  'Perdida'  ;
                 $objMascota->raza =  $mascota->razaMascota->nombre  ;
                 $objMascota->duenho =  $mascota->duenho ? $mascota->duenho->name : '' ;
             array_push($arrayMascotas,$objMascota);
@@ -176,7 +176,7 @@ class MascotaController extends Controller
                 $objMascota->pedigree = $mascota->pedigree  ;
                 $objMascota->color =  $mascota->color  ;
                 $objMascota->edad =  $mascota->edad  ;
-                $objMascota->estado =  'Encontrada'  ;
+                $objMascota->estado =  'Perdida'  ;
                 $objMascota->raza =  $mascota->razaMascota->nombre  ;
                 $objMascota->duenho =  $mascota->duenho ? $mascota->duenho->name : '' ;
                 $objMascota->latitud =  $mascota->altertas[0]->latitud  ;
@@ -197,8 +197,7 @@ class MascotaController extends Controller
                 $objMascota->pedigree = $mascota->pedigree  ;
                 $objMascota->color =  $mascota->color  ;
                 $objMascota->edad =  $mascota->edad  ;
-                $objMascota->estado =  'Encontrada'  ;
-                $objMascota->raza =  $mascota->razaMascota->nombre  ;
+                $objMascota->raza =  $mascota->razaMascota->nombre;
                 $objMascota->duenho =  $mascota->duenho ? $mascota->duenho->name : '' ;
                 array_push($arrayMascotas,$objMascota);
 
