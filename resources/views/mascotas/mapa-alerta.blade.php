@@ -13,7 +13,8 @@
     <div id ="map"> </div>
     <input type="hidden" class="latitud" value="{{$alerta->data["latitud"]}}">
     <input type="hidden" class="longitud" value="{{$alerta->data["longitud"]}}">
-    <img class="photo" src="{{asset(Auth()->user()->photo)}}">
+    <input type="hidden" class="photito" value="{{asset($alerta->data["mascota"]["imagen"])}}">
+    <input type="hidden" class="mascota-name" value="{{$alerta->data["mascota"]["nombre"]}}">
 @endsection
 
 @section('js')
