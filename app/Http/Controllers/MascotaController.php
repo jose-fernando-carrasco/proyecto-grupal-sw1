@@ -216,7 +216,8 @@ class MascotaController extends Controller
         $mascota->imagen = $request->imagen;
         $mascota->latitud = $request->latitud;
         $mascota->longitud = $request->longitud;
-        $mascota->longitud = $request->longitud;
+        $mascota->caracteristicas = $request->caracteristicas;
+        $mascota->telefono_referencia = $request->telefono_referencia;
         $mascota->save();
         return response()->json($mascota);
     }
